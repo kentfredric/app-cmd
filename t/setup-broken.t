@@ -7,7 +7,6 @@ use Test::Fatal;
 use lib 't/lib';
 
 ok( !exists $INC{'Test/BrokenCmd/Command.pm'},           'Broken library not tried to load yet' );
-ok( !exists $INC{'Test/BrokenCmd/Command::Notthere.pm'}, 'Missing library not tried to load yet' );
 
 isnt(
   exception {
@@ -16,7 +15,6 @@ isnt(
   undef,
   'using an obviously broken library should die'
 );
-
 {
   local $TODO = "require 'works' after failing on pre-5.10" if $] < 5.010;
   isnt(
@@ -29,6 +27,5 @@ isnt(
 }
 
 ok( exists $INC{'Test/BrokenCmd/Command.pm'},            'Broken library tried to load' );
-ok( !exists $INC{'Test/BrokenCmd/Command::Notthere.pm'}, 'Missing library not tried to load yet' );
 
 done_testing;
