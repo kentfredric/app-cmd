@@ -43,10 +43,20 @@ for (qw( Test::BrokenCmd Test::BrokenCmd::Command Test::IDONOTEXIST )) {
 
 =begin
 
+>=5.10
+
                    [ exists $INC ][ isa UNIVERSAL ][  $INC      ]
     Good Module    [    x        ][  x            ][    path    ]
     Bad Module     [    x        ][  x            ][    undef   ]
     Missing Module [             ][  x            ][    N/A     ]
+
+<=5.9
+                   [ exists $INC ][ isa UNIVERSAL ][  $INC      ]
+    Good Module    [    x        ][  x            ][    path    ]
+    Bad Module     [    x        ][  x            ][    path    ]
+    Missing Module [             ][  x            ][    N/A     ]
+
+
 
 
 =cut
